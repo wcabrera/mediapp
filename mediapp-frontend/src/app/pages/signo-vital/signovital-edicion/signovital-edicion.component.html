@@ -1,0 +1,53 @@
+<mat-card>Ingrese los datos de Signo Vital</mat-card>
+
+<form class="example-container" [formGroup]="form" (ngSubmit)="operar()" #frmPaciente="ngForm">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="idSignoVital">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" formControlName="fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!-- <mat-form-field class="example-full-width">
+        <input matInput placeholder="fecha" required formControlName="fecha">
+    </mat-form-field> -->
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="temperatura" required formControlName="temperatura">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="pulso" required formControlName="pulso">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="ritmo" required formControlName="ritmo">
+    </mat-form-field>
+
+    <!-- <mat-form-field class="example-full-width">
+        <input matInput placeholder="idPaciente" required formControlName="idPaciente">
+    </mat-form-field> -->
+
+    <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select formControlName="idPaciente" name="p">
+            <mat-option *ngFor="let p of pacientes" [value]="p.idPaciente">
+                {{p.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmPaciente.invalid">
+      <mat-icon>done</mat-icon>
+      <span>Aceptar</span>
+    </button>
+    <button mat-raised-button color="accent" routerLink='/paciente' type="button">
+      <mat-icon>close</mat-icon>
+      <span>Cancelar</span>
+    </button>
+</form>
